@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "psych"
+require "json"
 
 require_relative "../fileio/output/standard_output"
 require_relative "../formatter/table_format"
@@ -20,6 +21,9 @@ module Tablesyntax
           yaml_stream = File.read(path)
           yaml = Psych.safe_load(yaml_stream, permitted_classes: [Symbol])
           Formatter::TableFormat.as_table(yaml)
+        when ".json"
+          json = JSON.parse(File.read(path))
+          Formatter::TableFormat.as_table(json)
         else
           raise StandardError
         end
