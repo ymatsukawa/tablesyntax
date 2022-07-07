@@ -3,10 +3,10 @@
 module Tablesyntax
   module Formatter
     class TableFormat
-      def self.as_table(yaml)
-        keys = yaml["keys"]
-        table_kvs = yaml["table_kvs"]
-        
+      def self.as_table(maps)
+        keys = maps["keys"]
+        table_kvs = maps["table_kvs"]
+
         keys_with_comma = keys.map { |s| ":#{s}" }.join(", ")
         body = create_tables(table_kvs)
 
@@ -24,19 +24,21 @@ module Tablesyntax
         case obj
         when String
           if exclude_as_string?(obj)
-            obj.to_s.rjust(width)
+            obj.to_s
           else
-            format('"%s"', obj).rjust(width)
+            format('"%s"', obj)
           end
         when Symbol
-          format(":%s", obj).rjust(width)
+          format(":%s", obj)
+        when NilClass
+          "nil"
         else
-          obj.to_s.rjust(width)
-        end
+          obj.to_s
+        end.rjust(width)
       end
 
       def self.exclude_as_string?(str)
-        str == "nil" || /\s+\*\s+/.match?(str)
+        str.nil? || str == "nil" || /\s+\*\s+/.match?(str)
       end
 
       private_class_method :create_tables

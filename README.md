@@ -19,9 +19,12 @@ In `irb`
 require 'tablesyntax'
 
 Tablesyntax::Main.run '-f', '/path/to/yourfile.yml'
+# or
+Tablesyntax::Main.run '-f', '/path/to/yourfile.json'
 
-ex)
+# ex)
 Tablesyntax::Main.run '-f', './spec/FILES/many_types.yml'
+# follow data will be output on console
 where(:title, :metadata) do
              "string single quote" |                          "abcdefg"
              "string double quote" |                          "ABCDEFG"
@@ -35,7 +38,10 @@ where(:title, :metadata) do
 end
 ```
 
-* supported extension is `yaml` or `yml`
+* supported extension
+  * `yaml`
+  * `yml`
+  * `json`
 * example files are in [spec/FILES](./spec/FILES/)
 
 ## Required
