@@ -18,12 +18,12 @@ In `irb`
 ```ruby
 require 'tablesyntax'
 
-Tablesyntax::Main.run '-f', '/path/to/yourfile.yml'
+Tablesyntax::Main.run :file, '/path/to/yourfile.yml'
 # or
-Tablesyntax::Main.run '-f', '/path/to/yourfile.json'
+Tablesyntax::Main.run :file, '/path/to/yourfile.json'
 
 # ex)
-Tablesyntax::Main.run '-f', './spec/FILES/many_types.yml'
+Tablesyntax::Main.run :file, './spec/FILES/many_types.yml'
 # follow data will be output on console
 where(:title, :metadata) do
              "string single quote" |                          "abcdefg"
