@@ -7,8 +7,8 @@ RSpec.describe Tablesyntax::Parser::OptionParser do
     context "when options are valid" do
       where(:opts) do
         [
-          [["-f", "./spec/FILES/basic.yml"]],
-          [["-f", 12345]]
+          [[:file, "./spec/FILES/basic.yml"]],
+          [[:file, 12345]]
         ]
       end
       with_them do
@@ -26,7 +26,7 @@ RSpec.describe Tablesyntax::Parser::OptionParser do
     context "when options are invalid" do
       where(:opts) do
         [
-          [["-f"]],
+          [[:file]],
           [["-F"]],
           [["--oo--"]],
           [["abcdefg"]],

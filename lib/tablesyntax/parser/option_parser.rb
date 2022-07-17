@@ -11,7 +11,7 @@ module Tablesyntax
       end
 
       module Option
-        FILE_READ = "-f"
+        FILE_READ = :file
       end
 
       def parse
