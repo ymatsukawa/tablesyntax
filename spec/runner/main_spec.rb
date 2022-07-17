@@ -4,7 +4,7 @@ RSpec.describe Tablesyntax::Main do
   describe "#run" do
     context "when option exists" do
       let(:options) { [] }
-      subject { Tablesyntax::Main.run("-f", "./spec/FILES/basic.yml") }
+      subject { Tablesyntax::Main.run(:file, "./spec/FILES/basic.yml") }
 
       it do
         expect { subject }.not_to raise_error
